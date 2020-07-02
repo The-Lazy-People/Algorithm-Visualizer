@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="32dp"
         android:contextClickable="false"
         android:elegantTextHeight="true"
         android:fontFamily="@font/audiowide"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50121653" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/textView2"
@@ -61,12 +61,85 @@
 
     <ImageView
         android:id="@+id/issues"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Contributors"
+        android:textColor="#0B0A0A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/abhishek"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/thelazypeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/thelazypeople"
+        android:textColor="#070707"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/abhishek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/abhishek"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/adarsh"
+        app:layout_constraintStart_toStartOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/adarsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/adarsh"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/ayushi"
+        app:layout_constraintStart_toStartOf="@+id/abhishek" />
+
+    <TextView
+        android:id="@+id/ayushi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/ayushi"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/adarsh" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
+        android:drawableEnd="@drawable/ic_baseline_favorite_24"
+        android:text="Built With "
+        android:textColor="#0C0C0C"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/thelazypeople"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

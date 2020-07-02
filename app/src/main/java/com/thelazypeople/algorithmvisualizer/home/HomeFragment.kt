@@ -3,6 +3,7 @@ package com.thelazypeople.algorithmvisualizer.home
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Picasso.get().load("https://img.shields.io/github/issues/The-Lazy-People/Algorithm-Visualizer").into(issues)
+
+        thelazypeople.movementMethod = LinkMovementMethod.getInstance()
+        adarsh.movementMethod = LinkMovementMethod.getInstance()
+        abhishek.movementMethod = LinkMovementMethod.getInstance()
+        ayushi.movementMethod = LinkMovementMethod.getInstance()
 
     }
 
