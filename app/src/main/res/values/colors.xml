@@ -6,4 +6,8 @@
 
     <color name="cyan">#00acff</color>
     <color name="badf">#0097A7</color>
+
+    <color name="dark">#282828</color>
+    <color name="lightDark">#3b3f42</color>
+    <color name="silver">#C0C0C0</color>
 </resources>

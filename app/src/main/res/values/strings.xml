@@ -3,13 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string
-        name="thelazypeople"><a href="https://github.com/The-Lazy-People">The Lazy People</a></string>
-    <string
-        name="adarsh"><a href="https://www.linkedin.com/in/2001adarshsingh/">Adarsh Singh</a></string>
-    <string
-        name="abhishek"><a href="https://www.linkedin.com/in/abhishek-yadav-aps/">Abhishek Yadav</a></string>
-    <string
-        name="ayushi"><a href="https://www.linkedin.com/in/ayushi-doshi-731210191/">Ayushi Doshi</a></string>
+    <string name="thelazypeople"><a href="https://github.com/The-Lazy-People">The Lazy People</a></string>
+    <string name="adarsh"><a href="https://www.linkedin.com/in/2001adarshsingh/">Adarsh Singh</a></string>
+    <string name="abhishek"><a href="https://www.linkedin.com/in/abhishek-yadav-aps/">Abhishek Yadav</a></string>
+    <string name="ayushi"><a href="https://www.linkedin.com/in/ayushi-doshi-731210191/">Ayushi Doshi</a></string>
 
 </resources>
