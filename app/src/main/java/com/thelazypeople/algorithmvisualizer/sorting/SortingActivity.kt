@@ -21,7 +21,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     //array to store numbers in array to be sorted
     var arrayToBeSorted:MutableList<Int> = ArrayList()
     //white color
-    val whiteColor:String="#FFFFFF"
+    val whiteColor:String="#3b3f42"
     //red color
     val redColor:String="#FF0000"
     //green color
@@ -41,6 +41,8 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sorting)
+
+        window.statusBarColor = resources.getColor(R.color.dark)
 
         //false job initiazation
         falseJobInit()
@@ -321,7 +323,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     private fun paintAllButtonsWhiteAgain(size: Int) {
         for (i in 0..size){
             for (j in 0..size){
-                buttons[i][j].setBackgroundColor(Color.parseColor("#FFFFFF"))
+                buttons[i][j].setBackgroundColor(resources.getColor(R.color.lightDark))
             }
         }
     }
@@ -344,7 +346,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     // make a single coloumn of grid white
     private fun paintSingleColWhite(col: Int) {
         for (i in 0..size){
-            buttons[col][i].setBackgroundColor(Color.parseColor("#FFFFFF"))
+            buttons[col][i].setBackgroundColor(resources.getColor(R.color.lightDark))
         }
     }
     // create grid of size - parameter size
