@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pathfinder.PathFinderActivity"></activity>
+        <activity android:name=".pathfinder.TutorialActivity"></activity>
+        <activity android:name=".pathfinder.PathFinderActivity" />
         <activity android:name=".searching.SearchingActivity" />
         <activity android:name=".sorting.SortingActivity" />
         <activity

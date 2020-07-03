@@ -72,9 +72,16 @@ class PathFinderActivity : AppCompatActivity() {
 
     var bfsqueue: Queue<Tuple2> = LinkedList<Tuple2>()
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_path_finder)
+
+        window.statusBarColor = resources.getColor(R.color.dark)
 
         //Toolbar
         setSupportActionBar(pathFinderToolbar)
