@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/linearSearch"
+        android:title="Linear Search" />
+    <item
+        android:id="@+id/binarySearch"
+        android:title="Binary Search" />
+    <item
+        android:id="@+id/jumpSearch"
+        android:title="Jump search" />
+    <item
+        android:id="@+id/interpolationSearch"
+        android:title="Interpolation Search" />
+    <item
+        android:id="@+id/exponentialSearch"
+        android:title="Exponential Search" />
+</menu>
