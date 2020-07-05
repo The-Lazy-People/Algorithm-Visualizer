@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewPagerAdapter =ViewPagerAdapter(supportFragmentManager)
+        val viewPagerAdapter =FragmentAdapter(supportFragmentManager)
         viewPagerAdapter.apply {
-            add(HomeFragment())
-            add(ContentFragment())
+            addf(HomeFragment())
+            addf(ContentFragment())
         }
         viewPager.adapter = viewPagerAdapter
         //viewPager.setPageTransformer(true, ZoomOutPageTransformer())

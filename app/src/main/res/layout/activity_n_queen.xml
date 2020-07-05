@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nQueen.nQueenActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#fff"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="N-Queen Visualizer"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/boardSizeSB"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:back_circle_color="#EDEDED"
+        app:indicator_color="#0B3C49"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label="Board Size"
+        app:label_color="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.13999999"
+        app:main_circle_color="#FFFFFF"
+        app:max="8"
+        app:progress_primary_color="#0B3C49"
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/showBoardSizeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textColor="#0B3C49"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/boardSizeSB"
+        app:layout_constraintStart_toStartOf="@+id/boardSizeSB"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeSB" />
+
+    <Button
+        android:id="@+id/startVisualizationBTN"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="#fff"
+        android:text="START VISUALIZATION"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeSB"
+        app:layout_constraintVertical_bias="0.78" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

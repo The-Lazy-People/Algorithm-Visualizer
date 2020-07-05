@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.thelazypeople.algorithmvisualizer.R
+import com.thelazypeople.algorithmvisualizer.nQueen.nQueenActivity
 import com.thelazypeople.algorithmvisualizer.pathfinder.TutorialActivity
 import com.thelazypeople.algorithmvisualizer.searching.SearchingActivity
 import com.thelazypeople.algorithmvisualizer.sorting.SortingActivity
@@ -36,6 +37,10 @@ class ContentFragment : Fragment() {
 
         pathfinding.setOnClickListener {
             startActivity(Intent(context, TutorialActivity::class.java))
+        }
+
+        nQueens.setOnClickListener {
+            startActivity(Intent(context, nQueenActivity::class.java))
         }
 
     }
