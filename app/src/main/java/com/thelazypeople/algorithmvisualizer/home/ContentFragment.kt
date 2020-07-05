@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.thelazypeople.algorithmvisualizer.R
+import com.thelazypeople.algorithmvisualizer.kmp.KmpActivity
 import com.thelazypeople.algorithmvisualizer.nQueen.nQueenActivity
 import com.thelazypeople.algorithmvisualizer.pathfinder.TutorialActivity
 import com.thelazypeople.algorithmvisualizer.searching.SearchingActivity
@@ -43,6 +44,11 @@ class ContentFragment : Fragment() {
             startActivity(Intent(context, nQueenActivity::class.java))
         }
 
-    }
+        kmp.setOnClickListener {
+            startActivity(Intent(context, KmpActivity::class.java))
+        }
 
+
+
+    }
 }

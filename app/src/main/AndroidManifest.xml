@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".nQueen.ShowSolnActivity"></activity>
+        <activity android:name=".kmp.KmpActivity"></activity>
+        <activity android:name=".nQueen.ShowSolnActivity" />
         <activity android:name=".nQueen.VisualizationActivity" />
         <activity android:name=".nQueen.nQueenActivity" />
         <activity android:name=".pathfinder.TutorialActivity" />
