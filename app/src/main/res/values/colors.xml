@@ -10,4 +10,6 @@
     <color name="dark">#282828</color>
     <color name="lightDark">#3b3f42</color>
     <color name="silver">#C0C0C0</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

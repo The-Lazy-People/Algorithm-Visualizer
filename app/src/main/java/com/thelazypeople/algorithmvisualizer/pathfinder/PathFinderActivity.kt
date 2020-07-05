@@ -1,5 +1,6 @@
 package com.thelazypeople.algorithmvisualizer.pathfinder
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
@@ -72,10 +73,6 @@ class PathFinderActivity : AppCompatActivity() {
 
     var bfsqueue: Queue<Tuple2> = LinkedList<Tuple2>()
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

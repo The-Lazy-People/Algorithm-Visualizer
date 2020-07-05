@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.thelazypeople.algorithmvisualizer.R
+import com.thelazypeople.algorithmvisualizer.pathfinder.TutorialActivity
 import com.thelazypeople.algorithmvisualizer.searching.SearchingActivity
 import com.thelazypeople.algorithmvisualizer.sorting.SortingActivity
 import kotlinx.android.synthetic.main.fragment_content.*
@@ -33,6 +34,9 @@ class ContentFragment : Fragment() {
             startActivity(Intent(context, SearchingActivity::class.java))
         }
 
+        pathfinding.setOnClickListener {
+            startActivity(Intent(context, TutorialActivity::class.java))
+        }
 
     }
 

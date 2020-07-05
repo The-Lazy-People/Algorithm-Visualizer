@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager
 import com.thelazypeople.algorithmvisualizer.FragmentAdapter
 import com.thelazypeople.algorithmvisualizer.R
 import com.thelazypeople.algorithmvisualizer.ZoomOutPageTransformer
+import com.thelazypeople.algorithmvisualizer.pathfinder.tutorialui.*
 import kotlinx.android.synthetic.main.activity_tutorial.*
 
 class TutorialActivity : AppCompatActivity() {
@@ -23,11 +24,11 @@ class TutorialActivity : AppCompatActivity() {
 
         val viewPagerAdapter = FragmentAdapter(supportFragmentManager)
         viewPagerAdapter.apply {
-//            addf(FirstFragment())
-//            addf(SecondFragment())
-//            addf(ThirdFragment())
-//            addf(FourthFragment())
-//            addf(FifthFragment())
+            addf(oneFragment())
+            addf(twoFragment())
+            addf(threeFragment())
+            addf(fourFragment())
+            addf(fiveFragment())
         }
 
 

@@ -21,7 +21,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     //array to store numbers in array to be sorted
     var arrayToBeSorted:MutableList<Int> = ArrayList()
     //white color
-    val whiteColor:String="#3b3f42"
+    val whiteColor:String="#FFFFFF"
     //red color
     val redColor:String="#FF0000"
     //green color
@@ -323,7 +323,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     private fun paintAllButtonsWhiteAgain(size: Int) {
         for (i in 0..size){
             for (j in 0..size){
-                buttons[i][j].setBackgroundColor(resources.getColor(R.color.lightDark))
+                buttons[i][j].setBackgroundColor(resources.getColor(R.color.white))
             }
         }
     }
@@ -346,7 +346,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     // make a single coloumn of grid white
     private fun paintSingleColWhite(col: Int) {
         for (i in 0..size){
-            buttons[col][i].setBackgroundColor(resources.getColor(R.color.lightDark))
+            buttons[col][i].setBackgroundColor(resources.getColor(R.color.white))
         }
     }
     // create grid of size - parameter size
