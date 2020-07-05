@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.thelazypeople.algorithmvisualizer.R
+import com.thelazypeople.algorithmvisualizer.graph.GraphActivity
+import com.thelazypeople.algorithmvisualizer.graph.GraphTutorialActivity
 import com.thelazypeople.algorithmvisualizer.kmp.KmpActivity
 import com.thelazypeople.algorithmvisualizer.nQueen.nQueenActivity
 import com.thelazypeople.algorithmvisualizer.pathfinder.TutorialActivity
@@ -48,7 +50,9 @@ class ContentFragment : Fragment() {
             startActivity(Intent(context, KmpActivity::class.java))
         }
 
-
+        graph.setOnClickListener {
+            startActivity(Intent(context, GraphTutorialActivity::class.java))
+        }
 
     }
 }

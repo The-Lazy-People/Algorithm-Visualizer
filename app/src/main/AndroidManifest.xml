@@ -3,6 +3,7 @@
     package="com.thelazypeople.algorithmvisualizer">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".kmp.KmpActivity"></activity>
+        <activity android:name=".graph.GraphTutorialActivity"></activity>
+        <activity android:name=".graph.GraphActivity" />
+        <activity android:name=".kmp.KmpActivity" />
         <activity android:name=".nQueen.ShowSolnActivity" />
         <activity android:name=".nQueen.VisualizationActivity" />
         <activity android:name=".nQueen.nQueenActivity" />

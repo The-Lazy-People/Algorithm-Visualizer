@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="algorithms_array">
+        <item>Select the Algorithm here...</item>
+        <item>Depth First Search</item>
+        <item>Breadth First Search</item>
+    </string-array>
+
+    <string-array name="tree_algorithms">
+        <item>Select the Algorithm here...</item>
+        <item>Height of Tree</item>
+        <item>Diameter of Tree</item>
+    </string-array>
+
+</resources>
