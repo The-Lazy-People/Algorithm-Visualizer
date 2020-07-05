@@ -10,6 +10,8 @@ import com.thelazypeople.algorithmvisualizer.R
 import com.thelazypeople.algorithmvisualizer.graph.GraphActivity
 import com.thelazypeople.algorithmvisualizer.graph.GraphTutorialActivity
 import com.thelazypeople.algorithmvisualizer.kmp.KmpActivity
+import com.thelazypeople.algorithmvisualizer.markov.MarkovActivity
+import com.thelazypeople.algorithmvisualizer.markov.MarkovTutorialActivity
 import com.thelazypeople.algorithmvisualizer.nQueen.nQueenActivity
 import com.thelazypeople.algorithmvisualizer.pathfinder.TutorialActivity
 import com.thelazypeople.algorithmvisualizer.searching.SearchingActivity
@@ -52,6 +54,10 @@ class ContentFragment : Fragment() {
 
         graph.setOnClickListener {
             startActivity(Intent(context, GraphTutorialActivity::class.java))
+        }
+
+        markov.setOnClickListener {
+            startActivity(Intent(context, MarkovTutorialActivity::class.java))
         }
 
     }

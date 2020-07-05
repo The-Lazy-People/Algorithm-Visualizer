@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".graph.GraphTutorialActivity"></activity>
+        <activity android:name=".markov.tutorial.Markov3Activity"></activity>
+        <activity android:name=".markov.MarkovTutorialActivity" />
+        <activity android:name=".markov.SuggestionsActivity" />
+        <activity android:name=".markov.MarkovActivity" />
+        <activity android:name=".graph.GraphTutorialActivity" />
         <activity android:name=".graph.GraphActivity" />
         <activity android:name=".kmp.KmpActivity" />
         <activity android:name=".nQueen.ShowSolnActivity" />
