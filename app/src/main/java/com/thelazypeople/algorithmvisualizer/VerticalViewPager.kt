@@ -54,7 +54,7 @@ class VerticalViewPager(context: Context, attrs: AttributeSet?) :
         val height = height.toFloat()
         val x = (ev.y  / height * width )
         val y = (ev.x  / width * height )
-        ev.setLocation(x-200, y+200)
+        ev.setLocation(x, y)
         return ev
     }
 
