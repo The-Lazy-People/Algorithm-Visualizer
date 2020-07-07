@@ -40,6 +40,10 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var searchAlgoSelectedValue:Int=0
     var arraySortedOrNot=0
 
+    var delayTimeLong:Long=1000
+    var delayTimeMedium:Long=400
+    var delayTimeShort:Long=100
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -205,7 +209,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             } else {
                 for (i in 0..size) {
                     colorButton(i, arrayToBeSearched[i], redColor)
-                    delay(300)
+                    delay(delayTimeMedium)
                     paintSingleColWhite(i)
                     colorButton(i, arrayToBeSearched[i], greenColor)
                     if (arrayToBeSearched[i] == selected) {
@@ -234,7 +238,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             while (l <= r) {
                 val m = l + (r - l) / 2
                 colorButton(m, arrayToBeSearched[m], pinkColor)
-                delay(1000)
+                delay(delayTimeLong)
                 paintSingleColWhite(m)
                 colorButton(m, arrayToBeSearched[m], greenColor)
                 if (arrayToBeSearched[m] == x) {
@@ -247,7 +251,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], blueColor)
                     }
-                    delay(1000)
+                    delay(delayTimeLong)
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], greenColor)
                     }
@@ -256,7 +260,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], blueColor)
                     }
-                    delay(1000)
+                    delay(delayTimeLong)
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], greenColor)
                     }
@@ -283,7 +287,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             var prev = 0
             while (arrayToBeSearched[min(step, n) - 1] < selected) {
                 colorButton(min(step, n) - 1, arrayToBeSearched[min(step, n) - 1], pinkColor)
-                delay(1000)
+                delay(delayTimeLong)
                 paintSingleColWhite(min(step, n) - 1)
                 colorButton(min(step, n) - 1, arrayToBeSearched[min(step, n) - 1], greenColor)
                 prev = step
@@ -295,7 +299,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             // beginning with prev.
             while (arrayToBeSearched[prev] < selected) {
                 colorButton(prev, arrayToBeSearched[prev], pinkColor)
-                delay(1000)
+                delay(delayTimeLong)
                 paintSingleColWhite(prev)
                 colorButton(prev, arrayToBeSearched[prev], greenColor)
                 prev++
@@ -304,7 +308,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             if (arrayToBeSearched[prev] == selected)
             {
                 colorButton(prev, arrayToBeSearched[prev], blueColor)
-                delay(1000)
+                delay(delayTimeLong)
             }
         }
     }
@@ -323,7 +327,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             while (l <= r) {
                 val m = l + ((x-arrayToBeSearched[l])*(r-l))/(arrayToBeSearched[r]-arrayToBeSearched[l])
                 colorButton(m, arrayToBeSearched[m], pinkColor)
-                delay(1000)
+                delay(delayTimeLong)
                 paintSingleColWhite(m)
                 colorButton(m, arrayToBeSearched[m], greenColor)
                 if (arrayToBeSearched[m] == x) {
@@ -336,7 +340,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], blueColor)
                     }
-                    delay(1000)
+                    delay(delayTimeLong)
                     for (i in l..r){
                         colorButton(i, arrayToBeSearched[i], greenColor)
                     }
@@ -345,7 +349,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                     for (i in l..r) {
                         colorButton(i, arrayToBeSearched[i], blueColor)
                     }
-                    delay(1000)
+                    delay(delayTimeLong)
                     for (i in l..r) {
                         colorButton(i, arrayToBeSearched[i], greenColor)
                     }
@@ -363,7 +367,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
         }
         if (arrayToBeSearched[0] === x){
             colorButton(0, arrayToBeSearched[0], pinkColor)
-            delay(1000)
+            delay(delayTimeLong)
             paintSingleColWhite(0)
             colorButton(0, arrayToBeSearched[0], blueColor)
         }
@@ -374,7 +378,7 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                 i = i * 2
                 colorButton(i/2,arrayToBeSearched[i/2],redColor)
                 colorButton(min(i,size),arrayToBeSearched[min(i,size)],redColor)
-                delay(500)
+                delay(delayTimeLong/2)
                 colorButton(i/2,arrayToBeSearched[i/2],greenColor)
                 colorButton(min(i,size),arrayToBeSearched[min(i,size)],greenColor)
             }
@@ -393,14 +397,14 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                 var j = i - 1
                 while (j >= 0 && arrayToBeSearched[j] > item) {
                     colorButton(j+1,arrayToBeSearched[j+1],redColor)
-                    delay(50)
+                    delay(delayTimeShort)
                     paintSingleColWhite(j + 1)
                     colorButton(j + 1, arrayToBeSearched[j], greenColor)
                     arrayToBeSearched[j + 1] = arrayToBeSearched[j]
                     j = j - 1
                 }
                 colorButton(j+1,arrayToBeSearched[j+1],redColor)
-                delay(100)
+                delay(delayTimeShort)
                 paintSingleColWhite(j + 1)
                 colorButton(j + 1, item, greenColor)
                 arrayToBeSearched[j + 1] = item

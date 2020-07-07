@@ -37,6 +37,8 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     lateinit var jobMergeSort1: Job
     lateinit var jobMergeSort2: Job
 
+    var delayTimeMedium:Long=300
+    var delayTimeShort:Long=300
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -139,7 +141,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                     if (arrayToBeSorted[i] > arrayToBeSorted[i + 1]) {
                         //delay(100)
                         replaceTwoColInGrid(i, i + 1)
-                        delay(200)
+                        delay(delayTimeMedium)
                         val temp = arrayToBeSorted[i]
                         arrayToBeSorted[i] = arrayToBeSorted[i + 1]
                         arrayToBeSorted[i + 1] = temp
@@ -163,7 +165,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 }
                 if (i != indexOfMin) {
                     replaceTwoColInGrid(i, indexOfMin)
-                    delay(400)
+                    delay(delayTimeMedium)
                     temp = arrayToBeSorted[i]
                     arrayToBeSorted[i] = arrayToBeSorted[indexOfMin]
                     arrayToBeSorted[indexOfMin] = temp
@@ -205,7 +207,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             if (lleft[indexLeft] <= lright[indexRight]) {
                 paintSingleColWhite(i)
                 colorButton(i,lleft[indexLeft],redColor)
-                delay(200)
+                delay(delayTimeMedium)
                 colorButton(i,lleft[indexLeft],greenColor)
                 i++
                 newList.add(lleft[indexLeft])
@@ -213,7 +215,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             } else {
                 paintSingleColWhite(i)
                 colorButton(i,lright[indexRight],redColor)
-                delay(200)
+                delay(delayTimeMedium)
                 colorButton(i,lright[indexRight],greenColor)
                 i++
                 newList.add(lright[indexRight])
@@ -224,7 +226,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         while (indexLeft < lleft.size) {
             paintSingleColWhite(i)
             colorButton(i,lleft[indexLeft],redColor)
-            delay(200)
+            delay(delayTimeMedium)
             colorButton(i,lleft[indexLeft],greenColor)
             i++
             newList.add(lleft[indexLeft])
@@ -234,7 +236,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         while (indexRight < lright.size) {
             paintSingleColWhite(i)
             colorButton(i,lright[indexRight],redColor)
-            delay(200)
+            delay(delayTimeMedium)
             colorButton(i,lright[indexRight],greenColor)
             i++
             newList.add(lright[indexRight])
@@ -254,14 +256,14 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 var j = i - 1
                 while (j >= 0 && arrayToBeSorted[j] > item) {
                     colorButton(j+1,arrayToBeSorted[j+1],redColor)
-                    delay(100)
+                    delay(delayTimeShort)
                     paintSingleColWhite(j + 1)
                     colorButton(j + 1, arrayToBeSorted[j], greenColor)
                     arrayToBeSorted[j + 1] = arrayToBeSorted[j]
                     j = j - 1
                 }
                 colorButton(j+1,arrayToBeSorted[j+1],redColor)
-                delay(100)
+                delay(delayTimeShort)
                 paintSingleColWhite(j + 1)
                 colorButton(j + 1, item, greenColor)
                 arrayToBeSorted[j + 1] = item
@@ -310,7 +312,7 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val job= GlobalScope.launch(Dispatchers.Main) {
             colorButton(a, arrayToBeSorted[a], redColor)
             colorButton(b, arrayToBeSorted[b], redColor)
-            delay(200)
+            delay(delayTimeMedium)
             paintSingleColWhite(a)
             paintSingleColWhite(b)
             colorButton(a, arrayToBeSorted[b], greenColor)

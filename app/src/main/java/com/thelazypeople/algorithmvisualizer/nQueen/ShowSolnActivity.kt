@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.thelazypeople.algorithmvisualizer.R
 import com.thelazypeople.algorithmvisualizer.ViewAdapter
@@ -28,7 +29,11 @@ class ShowSolnActivity : AppCompatActivity() {
         val bundle :Bundle ?=intent.extras
         val dataString = bundle!!.getString("solutionMatrix")
         dataHolder = Gson().fromJson(dataString,solutionMatrix::class.java)
-        Toast.makeText(this,dataHolder.data.size.toString(), Toast.LENGTH_SHORT).show()
+        Snackbar.make(
+            findViewById(android.R.id.content),
+            "Total Solution - " + dataHolder.data.size.toString(),
+            Snackbar.LENGTH_LONG
+        ).show()
 
         Log.d("TAG", dataString.toString())
 

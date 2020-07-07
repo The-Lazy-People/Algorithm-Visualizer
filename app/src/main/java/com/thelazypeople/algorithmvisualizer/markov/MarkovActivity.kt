@@ -18,6 +18,7 @@ class MarkovActivity : AppCompatActivity() {
     var dataKeeper:TrainingDataKeeper= TrainingDataKeeper()
     var str=""
     var startTest=0
+    var delayTimeShort:Long=200
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +74,7 @@ class MarkovActivity : AppCompatActivity() {
                 prefix = words.subList(i, i + 1).joinToString(" ")
                 show.text =show.text.toString()+ prefix+"\n"
 
-                delay(10)
+                delay(delayTimeShort)
                 var scrollAmount = show.getLayout().getLineTop(show.getLineCount()) - show.getHeight();
                 // if there is no need to scroll, scrollAmount will be <=0
                 if (scrollAmount > 6)
@@ -83,14 +84,14 @@ class MarkovActivity : AppCompatActivity() {
 
                 suffix = if (i + 1 < words.size) words[i + 1] else ""
                 show2.text =show2.text.toString()+ suffix+"\n"
-                delay(10)
+                delay(delayTimeShort)
                 var scrollAmount2 = show.getLayout().getLineTop(show2.getLineCount()) - show2.getHeight();
                 // if there is no need to scroll, scrollAmount will be <=0
                 if (scrollAmount2 > 6)
                     show2.scrollTo(0, scrollAmount2);
                 else
                     show2.scrollTo(0, 0);
-                delay(10)
+                delay(delayTimeShort)
 
                 lateinit var suffixes: MutableMap<String,Int>
                 suffixes = dataKeeper.dictFutureWord.getOrPut(prefix) { mutableMapOf<String,Int>() }

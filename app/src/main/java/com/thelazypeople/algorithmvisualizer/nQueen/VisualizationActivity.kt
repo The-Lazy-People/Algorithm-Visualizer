@@ -29,6 +29,12 @@ class VisualizationActivity : AppCompatActivity() {
     var cl= mutableListOf<Int>()
     var i=1
     var dataHolder:solutionMatrix=solutionMatrix()
+    var job1:Job=GlobalScope.launch {  }
+    var job2:Job=GlobalScope.launch {  }
+    var job3:Job=GlobalScope.launch {  }
+    var activityIsCancelled=0
+    var delayTimeLong:Long=2000
+    var delayTimeShort:Long=500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +42,7 @@ class VisualizationActivity : AppCompatActivity() {
         val sharedPreferences=this.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)
         boardSize=sharedPreferences.getInt("boardSize",0)
         createButtonGrid()
-        GlobalScope.launch(Dispatchers.Main) {
+        job1=GlobalScope.launch(Dispatchers.Main) {
             for (i in 0..30){
                 ld.add(0)
                 rd.add(0)
@@ -99,41 +105,48 @@ class VisualizationActivity : AppCompatActivity() {
     }
 
     suspend fun printSolution(board: Array<IntArray>) {
-        Snackbar.make(findViewById(android.R.id.content), "Solution - "+i.toString(), Snackbar.LENGTH_LONG).show()
-        i++
-        var dataOfOneMatrix:MutableList<MutableList<Int>> = mutableListOf()
-        for (i in 0 until boardSize) {
-            for (j in 0 until boardSize)
-            {
-                if(board[i][j]==1){
-                    var dataOfOneBox:MutableList<Int> = mutableListOf()
-                    dataOfOneBox.add(i)
-                    dataOfOneBox.add(j)
-                    buttons[i][j].playAnimation()
-                    buttons[i][j].setInactiveImage(R.drawable.ic_crown)
-                    dataOfOneMatrix.add(dataOfOneBox)
+        job2=GlobalScope.launch(Dispatchers.Main) {
+            Snackbar.make(
+                findViewById(android.R.id.content),
+                "Solution - " + i.toString(),
+                Snackbar.LENGTH_LONG
+            ).show()
+            i++
+            var dataOfOneMatrix: MutableList<MutableList<Int>> = mutableListOf()
+            for (i in 0 until boardSize) {
+                for (j in 0 until boardSize) {
+                    if (board[i][j] == 1) {
+                        var dataOfOneBox: MutableList<Int> = mutableListOf()
+                        dataOfOneBox.add(i)
+                        dataOfOneBox.add(j)
+                        buttons[i][j].playAnimation()
+                        buttons[i][j].setInactiveImage(R.drawable.ic_crown)
+                        dataOfOneMatrix.add(dataOfOneBox)
+                    }
                 }
             }
-        }
-        dataHolder.data.add(dataOfOneMatrix)
-        CoroutineScope(Dispatchers.Main).launch{
-            val objectAnimator= ObjectAnimator.ofObject(
-                parentScreen,
-                "backgroundColor",
-                ArgbEvaluator(),
-                Color.parseColor("#FFFFFF"),
-                Color.parseColor("#000000"))
-            objectAnimator.repeatCount=1
-            objectAnimator.repeatMode= ValueAnimator.REVERSE
-            objectAnimator.duration=1000
-            objectAnimator.start()
+            dataHolder.data.add(dataOfOneMatrix)
+            job3=CoroutineScope(Dispatchers.Main).launch {
+                val objectAnimator = ObjectAnimator.ofObject(
+                    parentScreen,
+                    "backgroundColor",
+                    ArgbEvaluator(),
+                    Color.parseColor("#FFFFFF"),
+                    Color.parseColor("#000000")
+                )
+                objectAnimator.repeatCount = 1
+                objectAnimator.repeatMode = ValueAnimator.REVERSE
+                objectAnimator.duration = delayTimeLong/2
+                objectAnimator.start()
 
+            }
+            delay(delayTimeLong)
         }
-        delay(2000)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     suspend fun solveNQUtil(board: Array<IntArray>, col: Int): Boolean {
+
         if (col == boardSize) {
             var job1=GlobalScope.launch(Dispatchers.Main) {
                 printSolution(board)
@@ -151,7 +164,7 @@ class VisualizationActivity : AppCompatActivity() {
                 cl[i] = 1
                 buttons[i][col].playAnimation()
                 buttons[i][col].setInactiveImage(R.drawable.ic_crown)
-                delay(100)
+                delay(delayTimeShort)
                 var job2=GlobalScope.launch(Dispatchers.Main) {
                     res = solveNQUtil(board, col + 1) || res
                 }
@@ -162,7 +175,7 @@ class VisualizationActivity : AppCompatActivity() {
                 cl[i] = 0
                 buttons[i][col].playAnimation()
                 buttons[i][col].setInactiveImage(R.drawable.ic_mathematics_empty)
-                delay(100)
+                delay(delayTimeShort)
             }
         }
         return res
@@ -173,17 +186,31 @@ class VisualizationActivity : AppCompatActivity() {
             Array(boardSize) { IntArray(boardSize) }
         if (!solveNQUtil(board, 0)) {
             Snackbar.make(findViewById(android.R.id.content), "No results found!", Snackbar.LENGTH_LONG).show()
-            delay(3000)
+            delay(delayTimeLong*2)
             startActivity(Intent(this, nQueenActivity::class.java))
             finish()
             return
         }
         var dataString= Gson().toJson(dataHolder)
-        val intent= Intent(this,ShowSolnActivity::class.java)
-        intent.putExtra("solutionMatrix",dataString)
-        startActivity(intent)
-        finish()
+        if(activityIsCancelled==0) {
+            val intent = Intent(this, ShowSolnActivity::class.java)
+            intent.putExtra("solutionMatrix", dataString)
+            startActivity(intent)
+            finish()
+        }
         return
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        reset()
+    }
+
+    private fun reset() {
+        job1.cancel()
+        job2.cancel()
+        job3.cancel()
+        activityIsCancelled=1
     }
 
 }

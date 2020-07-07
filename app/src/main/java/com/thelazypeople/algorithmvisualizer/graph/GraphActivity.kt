@@ -41,6 +41,8 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
     var isEditingPosible=0
     lateinit var graphSpinner : Spinner
     lateinit var treeSpinner: Spinner
+    var delayTimeMedium:Long=1000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(window){
@@ -351,7 +353,7 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
             if(checker[s] == 0){
                 nodes[s].setImageDrawable(resources.getDrawable(R.drawable.ic_circle))
                 checker[s] = 1
-                delay(500)
+                delay(delayTimeMedium)
             }
             for (i in 0 until links[s].size){
                 if(checker[links[s][i]] == 0)
@@ -374,7 +376,7 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
             for (j in 0..links[front].size-1) {
                 if(checker[links[front][j]]==0) {
                     nodes[links[front][j]].setImageDrawable(resources.getDrawable(R.drawable.ic_circle))
-                    delay(1000)
+                    delay(delayTimeMedium)
                     queue.add(links[front][j])
                     checker[links[front][j]]=1
                 }
@@ -393,7 +395,7 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
             if(checker[links[startingTreeNode][i]]==0) {
                 checker[links[startingTreeNode][i]] = 1
                 nodes[links[startingTreeNode][i]].setImageDrawable(resources.getDrawable(R.drawable.ic_circle))
-                delay(1000)
+                delay(delayTimeMedium)
                 val depth=depthOfTree(links[startingTreeNode][i])
                 if( depth+ 1>height)
                     height =depth + 1
@@ -410,7 +412,7 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
             if(links[startingTreeNoder][i]!=root) {
                 if (checker[links[startingTreeNoder][i]] == 0) {
                     checker[links[startingTreeNoder][i]] = 1
-                    delay(1000)
+                    delay(delayTimeMedium)
                     val depth = depthOfTreeForDiameter(links[startingTreeNoder][i],root)
                     if (depth + 1 > height)
                         height = depth + 1

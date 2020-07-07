@@ -73,6 +73,9 @@ class PathFinderActivity : AppCompatActivity() {
 
     var bfsqueue: Queue<Tuple2> = LinkedList<Tuple2>()
 
+    var delayTimeShort:Long=100
+    var delayTimeMedium:Long=400
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -189,7 +192,7 @@ class PathFinderActivity : AppCompatActivity() {
                     }
 
                 }
-                delay(50)
+                delay(delayTimeShort)
                 var job1=GlobalScope.launch(Dispatchers.Main) {
 
                     recursiveDivisionMaze(xs, xwall - 1, ys, ye)
@@ -230,7 +233,7 @@ class PathFinderActivity : AppCompatActivity() {
                     }
 
                 }
-                delay(50)
+                delay(delayTimeShort)
                 var job1=GlobalScope.launch(Dispatchers.Main) {
                     recursiveDivisionMaze(xs, xe, ys, ywall - 1)
                 }
@@ -329,7 +332,7 @@ class PathFinderActivity : AppCompatActivity() {
         if (vis[x][y] == 0) {
             buttons[x][y].setInactiveImage(R.drawable.ic_mathematics_blue)
             buttons[x][y].playAnimation()
-            delay(50)
+            delay(delayTimeShort)
             vis[x][y] = 1
             if (x == desx) {
                 if (y == desy) {
@@ -555,7 +558,7 @@ class PathFinderActivity : AppCompatActivity() {
             buttons[dfsPath[i][0]][dfsPath[i][1]].setInactiveImage(R.drawable.ic_mathematics_green)
             buttons[dfsPath[i][0]][dfsPath[i][1]].setActiveImage(R.drawable.ic_mathematics_green)
             buttons[dfsPath[i][0]][dfsPath[i][1]].playAnimation()
-            delay(100)
+            delay(delayTimeShort)
 
         }
         if (dfsPath.size == 0) {
@@ -778,7 +781,7 @@ class PathFinderActivity : AppCompatActivity() {
                         if (weight[v[x][y][i][0]][v[x][y][i][1]] == 1) {
                             buttons[v[x][y][i][0]][v[x][y][i][1]].setInactiveImage(R.drawable.ic_mathematics_blue)
                             buttons[v[x][y][i][0]][v[x][y][i][1]].playAnimation()
-                            delay(50)
+                            delay(delayTimeShort)
                         }
 
                     }
@@ -840,7 +843,7 @@ class PathFinderActivity : AppCompatActivity() {
                 R.drawable.ic_mathematics_green
             )
             buttons[pather[butdesx][butdesy][i][0]][pather[butdesx][butdesy][i][1]].playAnimation()
-            delay(200)
+            delay(delayTimeMedium)
 
             //tester.append(pather[butdesx][butdesy][i][0].toString()+" "+pather[butdesx][butdesy][i][1].toString()+"\n")
 
@@ -1055,7 +1058,7 @@ class PathFinderActivity : AppCompatActivity() {
                         if (weight[v[x][y][i][0]][v[x][y][i][1]] == 1) {
                             buttons[v[x][y][i][0]][v[x][y][i][1]].setInactiveImage(R.drawable.ic_mathematics_blue)
                             buttons[v[x][y][i][0]][v[x][y][i][1]].playAnimation()
-                            delay(50)
+                            delay(delayTimeShort)
                         }
 
                     }
@@ -1118,7 +1121,7 @@ class PathFinderActivity : AppCompatActivity() {
                 R.drawable.ic_mathematics_green
             )
             buttons[pather[butdesx][butdesy][i][0]][pather[butdesx][butdesy][i][1]].playAnimation()
-            delay(200)
+            delay(delayTimeMedium)
 
             //tester.append(pather[butdesx][butdesy][i][0].toString()+" "+pather[butdesx][butdesy][i][1].toString()+"\n")
 
@@ -1333,7 +1336,7 @@ class PathFinderActivity : AppCompatActivity() {
 
                         buttons[v[x][y][i][0]][v[x][y][i][1]].setInactiveImage(R.drawable.ic_mathematics_blue)
                         buttons[v[x][y][i][0]][v[x][y][i][1]].playAnimation()
-                        delay(50)
+                        delay(delayTimeShort)
                     }
                     dis[v[x][y][i][0]][v[x][y][i][1]] = ((dis[x][y]) + 1)
 
@@ -1395,7 +1398,7 @@ class PathFinderActivity : AppCompatActivity() {
                 R.drawable.ic_mathematics_green
             )
             buttons[pather[butdesx][butdesy][i][0]][pather[butdesx][butdesy][i][1]].playAnimation()
-            delay(200)
+            delay(delayTimeMedium)
 
             //tester.append(pather[butdesx][butdesy][i][0].toString()+" "+pather[butdesx][butdesy][i][1].toString()+"\n")
 

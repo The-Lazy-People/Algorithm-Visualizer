@@ -17,6 +17,8 @@ import kotlinx.coroutines.launch
 class KmpActivity : AppCompatActivity() {
     var sourceString:String=""
     var targetString:String=""
+    var delayTimeMedium:Long=1000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kmp)
@@ -74,7 +76,7 @@ class KmpActivity : AppCompatActivity() {
                     tvResultString.text = str
                     tvLPSResultString.text=strLPS
                     tvLPSFakeResultString.text=strFakeLPS
-                    delay(500)
+                    delay(delayTimeMedium)
                     j++
                     i++
                 }
@@ -89,7 +91,7 @@ class KmpActivity : AppCompatActivity() {
                     strLPS.setSpan(BackgroundColorSpan(Color.YELLOW), 0, targetString.length, 0)
                     tvResultString.text = str
                     tvLPSResultString.text=strLPS
-                    delay(500)
+                    delay(delayTimeMedium)
                     strLPS.setSpan(BackgroundColorSpan(Color.WHITE), 0, targetString.length, 0)
                     c=i-j+targetString.length-1;
                     j = lps[j - 1]
@@ -109,7 +111,7 @@ class KmpActivity : AppCompatActivity() {
                         strLPS.setSpan(BackgroundColorSpan(Color.RED), j, j+1, 0)
                         tvResultString.text = str
                         tvLPSResultString.text=strLPS
-                        delay(500)
+                        delay(delayTimeMedium)
                         strLPS.setSpan(BackgroundColorSpan(Color.WHITE), j, j+1, 0)
                         str.setSpan(BackgroundColorSpan(Color.WHITE), i, i+1, 0)
                         j = lps[j - 1]
@@ -122,7 +124,7 @@ class KmpActivity : AppCompatActivity() {
                         strLPS.setSpan(BackgroundColorSpan(Color.RED), j, j+1, 0)
                         tvResultString.text = str
                         tvLPSResultString.text=strLPS
-                        delay(500)
+                        delay(delayTimeMedium)
                         strLPS.setSpan(BackgroundColorSpan(Color.WHITE), j, j+1, 0)
                         str.setSpan(BackgroundColorSpan(Color.WHITE), i, i+1, 0)
                         i = i + 1
