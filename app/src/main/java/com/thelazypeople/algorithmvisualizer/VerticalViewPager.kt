@@ -52,9 +52,9 @@ class VerticalViewPager(context: Context, attrs: AttributeSet?) :
     private fun flipXY(ev: MotionEvent): MotionEvent {
         val width = width.toFloat()
         val height = height.toFloat()
-        val x = ev.y / height * width
-        val y = ev.x / width * height
-        ev.setLocation(x, y)
+        val x = (ev.y  / height * width )
+        val y = (ev.x  / width * height )
+        ev.setLocation(x-200, y+200)
         return ev
     }
 

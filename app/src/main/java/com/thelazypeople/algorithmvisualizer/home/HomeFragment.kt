@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
-import android.webkit.*
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.thelazypeople.algorithmvisualizer.R
@@ -23,7 +27,6 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,6 +45,7 @@ class HomeFragment : Fragment() {
                 super.onReceivedError(view, request, error)
             }
         }
+        issues.setOnTouchListener(OnTouchListener { v, event -> true })
 
         stars.settings.apply {
             javaScriptEnabled=true
@@ -58,6 +62,7 @@ class HomeFragment : Fragment() {
                 super.onReceivedError(view, request, error)
             }
         }
+        stars.setOnTouchListener(OnTouchListener { v, event -> true })
 
         forks.settings.apply {
             javaScriptEnabled = true
@@ -74,20 +79,13 @@ class HomeFragment : Fragment() {
                 super.onReceivedError(view, request, error)
             }
         }
+        forks.setOnTouchListener(OnTouchListener { v, event -> true })
+
 
         thelazypeople.movementMethod = LinkMovementMethod.getInstance()
         adarsh.movementMethod = LinkMovementMethod.getInstance()
         abhishek.movementMethod = LinkMovementMethod.getInstance()
         ayushi.movementMethod = LinkMovementMethod.getInstance()
     }
-    class MyWebView : WebViewClient() {
-        override fun onReceivedError(
-            view: WebView?,
-            request: WebResourceRequest?,
-            error: WebResourceError?
-        ) {
-            super.onReceivedError(view, request, error)
 
-        }
-    }
 }
