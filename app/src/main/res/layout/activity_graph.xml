@@ -136,11 +136,10 @@
         android:layout_height="0dp"
         android:layout_weight="12"
         android:background="#FF8989"
-        app:layout_constraintBottom_toTopOf="@+id/btnstarting_point"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnvisualize"
-        app:layout_constraintVertical_bias="0.98">
+        app:layout_constraintTop_toBottomOf="@+id/btnvisualize">
 
         <com.thelazypeople.algorithmvisualizer.graph.LineView
             android:id="@+id/fakeLineView"
@@ -163,5 +162,34 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnRemoveConnection"
         app:layout_constraintTop_toTopOf="@+id/btnRemoveConnection" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Speed:"
+            android:textColor="#090909"
+            android:textSize="16sp" />
+
+        <SeekBar
+            android:id="@+id/graph_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
