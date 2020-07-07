@@ -144,7 +144,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/forks"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:clickable="false"/>
 
     <WebView
         android:id="@+id/forks"
@@ -156,7 +157,8 @@
         app:layout_constraintEnd_toStartOf="@+id/issues"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stars"
-        app:layout_constraintTop_toTopOf="@+id/issues" />
+        app:layout_constraintTop_toTopOf="@+id/issues"
+        android:clickable="false"/>
 
     <WebView
         android:id="@+id/issues"
@@ -168,7 +170,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/forks"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:clickable="false">
 
     </WebView>
 
