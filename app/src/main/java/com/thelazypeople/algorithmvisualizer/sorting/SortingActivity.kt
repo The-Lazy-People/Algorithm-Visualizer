@@ -10,7 +10,10 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import com.thelazypeople.algorithmvisualizer.R
+import kotlinx.android.synthetic.main.activity_searching.*
 import kotlinx.android.synthetic.main.activity_sorting.*
+import kotlinx.android.synthetic.main.activity_sorting.arraySizeSeekBar
+import kotlinx.android.synthetic.main.activity_sorting.randamizebtn
 import kotlinx.coroutines.*
 
 class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
@@ -37,8 +40,10 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     lateinit var jobMergeSort1: Job
     lateinit var jobMergeSort2: Job
 
-    var delayTimeMedium:Long=300
-    var delayTimeShort:Long=300
+    var delayTimeMedium:Long=600
+    var delayTimeShort:Long=200
+    var staticDelayTimeMedium:Long=30000
+    var staticDelayTimeShort:Long=10000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +53,8 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         //false job initiazation
         falseJobInit()
-
+        speedChangeSeekBarSorting.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarSorting.progress = 50
         //Toolbar added
         setSupportActionBar(sortingToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -408,15 +414,25 @@ class SortingActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     }
     //seekbar function
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        size=(progress/4)+5
-        deleteMainScreen()
-        createButtonGrid(size)
-        randamize(size)
+        if(seekBar==arraySizeSeekBar) {
+            size = (progress / 4) + 5
+            deleteMainScreen()
+            createButtonGrid(size)
+            randamize(size)
+        }
+        else if (seekBar==speedChangeSeekBarSorting){
+            if(progress!=0) {
+                delayTimeMedium = staticDelayTimeMedium / progress
+                delayTimeShort = staticDelayTimeShort / progress
+            }
+        }
     }
     //seekbar function
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
-        cancelAllJobs()
-        paintAllButtonsWhiteAgain(size)
+        if(seekBar==arraySizeSeekBar) {
+            cancelAllJobs()
+            paintAllButtonsWhiteAgain(size)
+        }
     }
 
     //seekbar function

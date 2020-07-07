@@ -20,7 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
-class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragListener, AdapterView.OnItemSelectedListener {
+class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragListener, AdapterView.OnItemSelectedListener,SeekBar.OnSeekBarChangeListener {
     var pointAForLine= PointF(10f,10f)
     var pointBForLine= PointF(10f,10f)
     var stateOfConnection=0
@@ -41,7 +41,8 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
     var isEditingPosible=0
     lateinit var graphSpinner : Spinner
     lateinit var treeSpinner: Spinner
-    var delayTimeMedium:Long=1000
+    var delayTimeMedium:Long=200
+    var staticDelayTimeMedium:Long=10000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +52,8 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
         }
 
         setContentView(R.layout.activity_graph)
-
+        speedChangeSeekBarGraph.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarGraph.setProgress(50)
         graphSpinner = findViewById(R.id.spinner)
         ArrayAdapter.createFromResource(
             this,
@@ -632,5 +634,15 @@ class GraphActivity : AppCompatActivity(), View.OnTouchListener, View.OnDragList
             algorithm = pos
         }
     }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        if(progress!=0) {
+            delayTimeMedium = staticDelayTimeMedium / progress
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
 }

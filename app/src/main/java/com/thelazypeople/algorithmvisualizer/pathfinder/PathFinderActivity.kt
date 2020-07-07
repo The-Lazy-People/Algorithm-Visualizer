@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -28,7 +29,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 
-class PathFinderActivity : AppCompatActivity() {
+class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     val buttonStatusKeeper: MutableList<MutableMap<SparkButton, Int>> = ArrayList()
     val buttons: MutableList<MutableList<SparkButton>> = ArrayList()
     val size = 10
@@ -73,8 +74,10 @@ class PathFinderActivity : AppCompatActivity() {
 
     var bfsqueue: Queue<Tuple2> = LinkedList<Tuple2>()
 
-    var delayTimeShort:Long=100
-    var delayTimeMedium:Long=400
+    var delayTimeShort:Long=80
+    var delayTimeMedium:Long=300
+    var staticDelayTimeShort:Long=4000
+    var staticDelayTimeMedium:Long=15000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +89,8 @@ class PathFinderActivity : AppCompatActivity() {
         //Toolbar
         setSupportActionBar(pathFinderToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
+        speedChangeSeekBarPathfinder.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarPathfinder.setProgress(50)
 
         gradientDrawableValueSetter()
         createButtonGrid()
@@ -1595,5 +1599,20 @@ class PathFinderActivity : AppCompatActivity() {
             buttons.add(buttonRow)
             screenLinearLayout.addView(arrayLinearLayout)
         }
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        if(progress!=0) {
+            delayTimeShort = staticDelayTimeShort / progress
+            delayTimeMedium=staticDelayTimeMedium/progress
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
     }
 }

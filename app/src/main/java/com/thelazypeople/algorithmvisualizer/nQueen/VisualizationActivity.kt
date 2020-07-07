@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.SeekBar
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -21,7 +22,7 @@ import com.varunest.sparkbutton.SparkButtonBuilder
 import kotlinx.android.synthetic.main.activity_visualization.*
 import kotlinx.coroutines.*
 
-class VisualizationActivity : AppCompatActivity() {
+class VisualizationActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var boardSize=0
     val buttons: MutableList<MutableList<SparkButton>> = ArrayList()
     var ld= mutableListOf<Int>()
@@ -33,12 +34,16 @@ class VisualizationActivity : AppCompatActivity() {
     var job2:Job=GlobalScope.launch {  }
     var job3:Job=GlobalScope.launch {  }
     var activityIsCancelled=0
-    var delayTimeLong:Long=2000
-    var delayTimeShort:Long=500
+    var delayTimeLong:Long=300
+    var delayTimeShort:Long=50
+    var staticDelayTimeLong:Long=15000
+    var staticDelayTimeShort:Long=2500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visualization)
+        speedChangeSeekBarNQueen.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarNQueen.setProgress(50)
         val sharedPreferences=this.getSharedPreferences("sharedPrefFile", Context.MODE_PRIVATE)
         boardSize=sharedPreferences.getInt("boardSize",0)
         createButtonGrid()
@@ -211,6 +216,21 @@ class VisualizationActivity : AppCompatActivity() {
         job2.cancel()
         job3.cancel()
         activityIsCancelled=1
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        if(progress!=0) {
+            delayTimeShort = staticDelayTimeShort / progress
+            delayTimeLong=staticDelayTimeLong/progress
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
     }
 
 }

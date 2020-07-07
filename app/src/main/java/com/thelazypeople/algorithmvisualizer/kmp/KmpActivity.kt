@@ -7,6 +7,7 @@ import android.text.SpannableString
 import android.text.style.BackgroundColorSpan
 import android.view.View
 import android.view.WindowManager
+import android.widget.SeekBar
 import com.thelazypeople.algorithmvisualizer.R
 import kotlinx.android.synthetic.main.activity_kmp.*
 import kotlinx.coroutines.Dispatchers
@@ -14,15 +15,18 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class KmpActivity : AppCompatActivity() {
+class KmpActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var sourceString:String=""
     var targetString:String=""
-    var delayTimeMedium:Long=1000
+    var delayTimeMedium:Long=500
+    var staticDelayTimeMedium:Long=25000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kmp)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        speedChangeSeekBarKMP.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarKMP.setProgress(50)
         btnSearch.setOnClickListener {
             btnSearch.isClickable=false
             sourceString=etSourceString.text.toString()
@@ -174,5 +178,19 @@ class KmpActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        if(progress!=0) {
+            delayTimeMedium = staticDelayTimeMedium / progress
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
     }
 }

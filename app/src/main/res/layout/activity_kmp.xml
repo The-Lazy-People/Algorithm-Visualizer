@@ -173,7 +173,7 @@
             android:textColor="#070707" />
 
         <SeekBar
-            android:id="@+id/kmp_speed"
+            android:id="@+id/speedChangeSeekBarKMP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="10" />

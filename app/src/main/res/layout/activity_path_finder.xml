@@ -133,7 +133,7 @@
             android:textSize="16sp" />
 
         <SeekBar
-            android:id="@+id/pathFinder_speed"
+            android:id="@+id/speedChangeSeekBarPathfinder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="10" />

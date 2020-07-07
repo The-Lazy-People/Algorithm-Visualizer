@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.thelazypeople.algorithmvisualizer.R
 import kotlinx.android.synthetic.main.activity_searching.*
+import kotlinx.android.synthetic.main.activity_searching.arraySizeSeekBar
+import kotlinx.android.synthetic.main.activity_searching.randamizebtn
+import kotlinx.android.synthetic.main.activity_sorting.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -43,6 +46,9 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var delayTimeLong:Long=1000
     var delayTimeMedium:Long=400
     var delayTimeShort:Long=100
+    var staticDelayTimeShort:Long=5000
+    var staticDelayTimeMedium:Long=20000
+    var staticdelayTimeLong:Long=50000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +63,8 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         //seekbar added
         arraySizeSeekBar.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarSearching.setOnSeekBarChangeListener(this)
+        speedChangeSeekBarSearching.setProgress(50)
 
         createButtonGrid(size)
         searchbtn.text = "Linear Search"
@@ -532,14 +540,25 @@ class SearchingActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        size=(progress/4)+5
-        deleteMainScreen()
-        createButtonGrid(size)
-        randamize(size)
+
+        if(seekBar==arraySizeSeekBar) {
+            size=(progress/4)+5
+            deleteMainScreen()
+            createButtonGrid(size)
+            randamize(size)
+        }
+        else if (seekBar==speedChangeSeekBarSearching){
+            if(progress!=0) {
+                delayTimeMedium = staticDelayTimeMedium / progress
+                delayTimeShort = staticDelayTimeShort / progress
+                delayTimeLong = staticdelayTimeLong / progress
+            }
+        }
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
-        paintAllButtonsWhiteAgain(size)
+        if(seekBar==arraySizeSeekBar)
+            paintAllButtonsWhiteAgain(size)
     }
 
     override fun onStopTrackingTouch(seekBar: SeekBar?) {}
