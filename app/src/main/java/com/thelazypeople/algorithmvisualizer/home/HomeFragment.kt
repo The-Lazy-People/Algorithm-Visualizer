@@ -2,18 +2,16 @@ package com.thelazypeople.algorithmvisualizer.home
 
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.text.method.LinkMovementMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.*
 import androidx.annotation.RequiresApi
-import com.squareup.picasso.Picasso
+import androidx.fragment.app.Fragment
 import com.thelazypeople.algorithmvisualizer.R
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class HomeFragment : Fragment() {
 
@@ -29,13 +27,67 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Picasso.get().load("https://img.shields.io/github/issues/The-Lazy-People/Algorithm-Visualizer").into(issues)
+        issues.settings.apply {
+            javaScriptEnabled = true
+            allowContentAccess = true
+        }
+        issues.loadUrl("https://img.shields.io/github/issues/The-Lazy-People/Algorithm-Visualizer")
+        issues.webViewClient = object :WebViewClient(){
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                issues.visibility = View.INVISIBLE
+                super.onReceivedError(view, request, error)
+            }
+        }
+
+        stars.settings.apply {
+            javaScriptEnabled=true
+            allowContentAccess = true
+        }
+        stars.loadUrl("https://img.shields.io/github/stars/The-Lazy-People/Algorithm-Visualizer")
+        stars.webViewClient = object :WebViewClient(){
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                stars.visibility = View.INVISIBLE
+                super.onReceivedError(view, request, error)
+            }
+        }
+
+        forks.settings.apply {
+            javaScriptEnabled = true
+            allowContentAccess = true
+        }
+        forks.loadUrl("https://img.shields.io/github/forks/The-Lazy-People/Algorithm-Visualizer")
+        forks.webViewClient = object :WebViewClient(){
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                forks.visibility = View.INVISIBLE
+                super.onReceivedError(view, request, error)
+            }
+        }
 
         thelazypeople.movementMethod = LinkMovementMethod.getInstance()
         adarsh.movementMethod = LinkMovementMethod.getInstance()
         abhishek.movementMethod = LinkMovementMethod.getInstance()
         ayushi.movementMethod = LinkMovementMethod.getInstance()
-
     }
+    class MyWebView : WebViewClient() {
+        override fun onReceivedError(
+            view: WebView?,
+            request: WebResourceRequest?,
+            error: WebResourceError?
+        ) {
+            super.onReceivedError(view, request, error)
 
+        }
+    }
 }
