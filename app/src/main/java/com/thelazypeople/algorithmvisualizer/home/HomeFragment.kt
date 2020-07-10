@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
             javaScriptEnabled = true
             allowContentAccess = true
         }
-        issues.loadUrl("https://img.shields.io/github/issues/The-Lazy-People/Algorithm-Visualizer")
+        issues.loadUrl("https://img.shields.io/github/issues/The-Lazy-People/Algorithm-Visualizer?style=for-the-badge")
         issues.webViewClient = object :WebViewClient(){
             override fun onReceivedError(
                 view: WebView?,
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
             javaScriptEnabled=true
             allowContentAccess = true
         }
-        stars.loadUrl("https://img.shields.io/github/stars/The-Lazy-People/Algorithm-Visualizer")
+        stars.loadUrl("https://img.shields.io/github/stars/The-Lazy-People/Algorithm-Visualizer?style=for-the-badge")
         stars.webViewClient = object :WebViewClient(){
             override fun onReceivedError(
                 view: WebView?,
@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             javaScriptEnabled = true
             allowContentAccess = true
         }
-        forks.loadUrl("https://img.shields.io/github/forks/The-Lazy-People/Algorithm-Visualizer")
+        forks.loadUrl("https://img.shields.io/github/forks/The-Lazy-People/Algorithm-Visualizer?style=for-the-badge")
         forks.webViewClient = object :WebViewClient(){
             override fun onReceivedError(
                 view: WebView?,
@@ -78,6 +78,11 @@ class HomeFragment : Fragment() {
                 forks.visibility = View.INVISIBLE
                 super.onReceivedError(view, request, error)
             }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                view?.loadUrl("javascript:document.getElementById('crispEdges');")
+            }
+
         }
         forks.setOnTouchListener(OnTouchListener { v, event -> true })
 
