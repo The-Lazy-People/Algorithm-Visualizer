@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frameLayout"
     android:background="@drawable/home_page"
     tools:context=".home.HomeFragment">
 
@@ -39,19 +39,20 @@
         app:lottie_speed="0.5" />
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forks"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_fileName="back.json" />
+        app:lottie_fileName="back.json"
+        app:lottie_loop="true" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -150,44 +151,39 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <WebView
+    <include
         android:id="@+id/stars"
-        android:layout_width="0dp"
+        layout="@layout/stars"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:clickable="false"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/lottieAnimationView"
         app:layout_constraintEnd_toStartOf="@+id/forks"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/forks"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <WebView
+    <include
         android:id="@+id/forks"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="24dp"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/issues"
+        layout="@layout/forks"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/stars"
         app:layout_constraintEnd_toStartOf="@+id/issues"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stars"
-        app:layout_constraintTop_toTopOf="@+id/issues" />
+        app:layout_constraintTop_toTopOf="@+id/stars" />
 
-    <WebView
+    <include
         android:id="@+id/issues"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        layout="@layout/issues"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/forks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/forks"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toTopOf="@+id/forks" />
 
-    </WebView>
 </androidx.constraintlayout.widget.ConstraintLayout>

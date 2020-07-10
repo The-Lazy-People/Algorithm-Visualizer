@@ -59,9 +59,16 @@ class ShowSolnActivity : AppCompatActivity() {
         resetbtn.setOnClickListener {
             val intent = Intent(this, nQueenActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, nQueenActivity::class.java))
+        finish()
+    }
+
     private fun createButtonGrid(mutableList: MutableList<MutableList<Int>>) {
         // new dynamically declared linear layout inside screen linear layout so grid can be deleted at any time
         val buttons: MutableList<MutableList<SparkButton>> = ArrayList()

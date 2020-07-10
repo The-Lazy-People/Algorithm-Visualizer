@@ -29,8 +29,10 @@ class nQueenActivity : AppCompatActivity(), OnCrollerChangeListener {
             prefEditor.commit()
             val intent = Intent(this,VisualizationActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
+
     override fun onProgressChanged(croller: Croller?, progress: Int) {
         showBoardSizeTV.text = progress.toString()
         boardSize = progress
