@@ -14,8 +14,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.thelazypeople.algorithmvisualizer.R
 import com.varunest.sparkbutton.SparkButton
 import com.varunest.sparkbutton.SparkButtonBuilder
@@ -82,6 +84,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var isSearchRunning=0
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_path_finder)
@@ -570,7 +573,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         }
         if (dfsPath.size == 0) {
-            Toast.makeText(this, "NO PATH FOUND!!", Toast.LENGTH_LONG).show()
+            Snackbar.make(parentLayout,"NO PATH FOUND!!",Snackbar.LENGTH_SHORT).show()
         }
         clearbut.isClickable = true
         isSearchRunning=0
@@ -859,7 +862,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         }
         if (pather[butdesx][butdesy].size == 0) {
-            Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
+            Snackbar.make(parentLayout,"NO PATH FOUND!!",Snackbar.LENGTH_SHORT).show()
         }
         clearbut.isClickable = true
         isSearchRunning=0
@@ -1139,7 +1142,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         }
         if (pather[butdesx][butdesy].size == 0) {
-            Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
+            Snackbar.make(parentLayout,"NO PATH FOUND!!",Snackbar.LENGTH_SHORT).show()
         }
         clearbut.isClickable = true
         isSearchRunning=0
@@ -1418,7 +1421,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         }
         if (pather[butdesx][butdesy].size == 0) {
-            Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
+            Snackbar.make(parentLayout,"NO PATH FOUND!!",Snackbar.LENGTH_SHORT).show()
         }
         clearbut.isClickable = true
         isSearchRunning=0
