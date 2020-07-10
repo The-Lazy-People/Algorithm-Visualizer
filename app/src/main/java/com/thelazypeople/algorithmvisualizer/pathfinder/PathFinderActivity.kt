@@ -79,6 +79,8 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     var staticDelayTimeShort:Long=4000
     var staticDelayTimeMedium:Long=15000
 
+    var isSearchRunning=0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +96,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
 
         gradientDrawableValueSetter()
         createButtonGrid()
-        search.text="Dijikstra"
+        search.text="Dijkstra"
 
         //paintAllButtonsWhite()
         search.setOnClickListener {
@@ -258,42 +260,43 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        if (isSearchRunning==0) {
+            when (item.itemId) {
 
-            R.id.id_dijkstra -> {
-                //dijkstra()
-                algoChooseValue=0
-                search.text="Dijikstra"
-                clearGrid()
-                return true
-            }
-            R.id.id_dfs -> {
-                //dfs()
-                algoChooseValue=1
-                search.text="DFS"
-                weight_btn.isClickable=false
-                clearGrid()
-                return true
-            }
-            R.id.id_bfs -> {
-                //bfs()
-                algoChooseValue=2
-                search.text="BFS"
-                weight_btn.isClickable=false
-                clearGrid()
-                return true
-            }
-            R.id.id_astar -> {
-                //astar()
-                algoChooseValue=3
-                weight_btn.isClickable=true
-                search.text="AStar"
-                clearGrid()
-                return true
+                R.id.id_dijkstra -> {
+                    //dijkstra()
+                    algoChooseValue = 0
+                    search.text = "Dijkstra"
+                    clearGrid()
+                    return true
+                }
+                R.id.id_dfs -> {
+                    //dfs()
+                    algoChooseValue = 1
+                    search.text = "DFS"
+                    weight_btn.isClickable = false
+                    clearGrid()
+                    return true
+                }
+                R.id.id_bfs -> {
+                    //bfs()
+                    algoChooseValue = 2
+                    search.text = "BFS"
+                    weight_btn.isClickable = false
+                    clearGrid()
+                    return true
+                }
+                R.id.id_astar -> {
+                    //astar()
+                    algoChooseValue = 3
+                    weight_btn.isClickable = true
+                    search.text = "AStar"
+                    clearGrid()
+                    return true
+                }
             }
         }
         return super.onOptionsItemSelected(item)
-
     }
 
     private fun clearGrid() {
@@ -366,6 +369,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     suspend fun findPathDFS() {
+        isSearchRunning=1
         gridButtonActiveOrNot=1
         search.isClickable = false
         clearbut.isClickable = false
@@ -569,6 +573,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             Toast.makeText(this, "NO PATH FOUND!!", Toast.LENGTH_LONG).show()
         }
         clearbut.isClickable = true
+        isSearchRunning=0
     }
 
     fun weightMaker() {
@@ -810,6 +815,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     private suspend fun findPathdijikstra() {
+        isSearchRunning=1
         gridButtonActiveOrNot=1
         search.isClickable = false
         weight_btn.isClickable = false
@@ -856,6 +862,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
         }
         clearbut.isClickable = true
+        isSearchRunning=0
     }
 
     suspend fun AStar(){
@@ -1088,6 +1095,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     suspend fun findPathAStar(){
+        isSearchRunning=1
         gridButtonActiveOrNot=1
         search.isClickable = false
         weight_btn.isClickable = false
@@ -1134,6 +1142,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
         }
         clearbut.isClickable = true
+        isSearchRunning=0
     }
 
     suspend fun bfs(){
@@ -1364,6 +1373,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
     }
 
     suspend fun findPathBFS(){
+        isSearchRunning=1
         gridButtonActiveOrNot=1
         search.isClickable = false
         weight_btn.isClickable = false
@@ -1411,6 +1421,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
             Toast.makeText(this, "NO PATH FOUND", Toast.LENGTH_LONG).show()
         }
         clearbut.isClickable = true
+        isSearchRunning=0
     }
 
     private fun gradientDrawableValueSetter() {
