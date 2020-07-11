@@ -335,6 +335,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
         if(algoChooseValue==3)
             weight_btn.isClickable = true
         gridButtonActiveOrNot=0
+        isSearchRunning=0
 
     }
 
@@ -1503,6 +1504,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                         if (startStatusKeeper == 0) {
                             sbutton.setActiveImage(R.drawable.ic_trending_flat_24px)
                             sbutton.isClickable = false
+                            sbutton.setOnClickListener {  }
                             sbutton.setInactiveImage(R.drawable.ic_trending_flat_24px)
                             startStatusKeeper = 1
                             buttonStatusRow.put(sbutton, 3)
@@ -1518,6 +1520,7 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                         } else if (endStatusKeeper == 0) {
                             sbutton.setActiveImage(R.drawable.ic_gps_fixed_24px)
                             sbutton.isClickable = false
+                            sbutton.setOnClickListener {  }
                             sbutton.setInactiveImage(R.drawable.ic_gps_fixed_24px)
                             //sbutton.pressOnTouch(false)
                             endStatusKeeper = 1
@@ -1532,7 +1535,8 @@ class PathFinderActivity : AppCompatActivity(),SeekBar.OnSeekBarChangeListener {
                             butdesy = j
 
                             //findPath()
-                        } else {
+                        }
+                        else  {
                             if (buttonStatusRow.get(sbutton) != 3) {
                                 if (buttonWeightStatus == 0) {
                                     sbutton.setActiveImage(R.drawable.ic_mathematics)
