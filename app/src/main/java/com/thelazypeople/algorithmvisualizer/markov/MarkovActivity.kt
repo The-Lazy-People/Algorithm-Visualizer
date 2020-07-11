@@ -18,7 +18,7 @@ class MarkovActivity : AppCompatActivity() {
     var dataKeeper:TrainingDataKeeper= TrainingDataKeeper()
     var str=""
     var startTest=0
-    var delayTimeShort:Long=200
+    var delayTimeShort:Long=20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
