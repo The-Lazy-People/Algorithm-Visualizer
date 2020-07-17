@@ -42,6 +42,10 @@ In this one can easily put weights and blocks to show an uncrossable path. Speed
 ## Markov’s-Chain algorithm:-
 - It is mostly used in Machine Learning. A tutorial has been made to guide the users through it. The user needs to give a large dataset in the training data and allow the model to wait and till then the user can visualize the steps in which prefix and suffix has been stored. Then after training the model is ready to test and one can type the words or letters in prefix and the suggestions of next words or current words will be shown in the suggestion box, same as we see while using a keyboard.
 
+## YOUTUBE LINK:-
+* <a href="https://youtu.be/ZFqzA3f5Di8"> **ALGORITHM VISUALIZER** </a> 
+
+
 ## Getting Started :+1:
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
