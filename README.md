@@ -6,6 +6,15 @@
 ## All about Algorithm-Visualizer
 Algorithm Visualizer is an application made particularly for students to have a better understanding of algorithms. It helps in grasping the working of algorithms at an ease. The collection of Algorithms it has included are Searching, Sorting, PathFinding, Graphs/Trees, N-Queen, KMP, and Markov-Chain, all in all, a package with most of it. It develops a perception in the mind of the students as to how things are processing at the back-end of a particular task. Students interested in Technology can comprehend it and can have a better insight into such lessons which are studied at an early stage of college and can excel in it. It contains a whole lot of data structures like arrays, graphs, trees, strings, and much more. As it has been always a case that a student can learn better when they start visualizing things so this application brings all these things handy to you as you can change the sizes of data structures and can control the speed of working of algorithms and can play with it as long as you want and can be become brilliant in it.
 
+## APPLICATION DISPLAY  :eyes:	
+<kbd><img src="Images/1.jpeg" width=300></kbd>
+<kbd><img src="Images/2.jpeg" width=300></kbd>
+<kbd><img src="Images/3.jpeg" width=300></kbd>
+<kbd><img src="Images/4.jpeg" width=300></kbd>
+<kbd><img src="Images/5.jpeg" width=300></kbd>
+<kbd><img src="Images/6.jpeg" width=300></kbd>
+
+
 # The Set of Algorithms it has are:-
 
 ## Searching Visualizer:-
