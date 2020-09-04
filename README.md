@@ -68,7 +68,7 @@ Say what the step will be
 
 ```
 You can Download the application using below link-
-https://github.com/The-Lazy-People/Algorithm-Visualizer
+https://play.google.com/store/apps/details?id=com.thelazypeople.algorithmvisualizer
 ```
 
 ## Built With :heartbeat:
